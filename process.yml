@@ -1,0 +1,7 @@
+apps:
+  - name: "compressor-api"
+    script: "index.js"
+    cwd: "/app"
+    exec_mode: "fork"
+    max_memory_restart: "100M"
+    autorestart: true
