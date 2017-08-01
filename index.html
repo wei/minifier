@@ -1,0 +1,17 @@
+<h1>Compressor Coming Soon</h1>
+<h2><small>Connecting...</small></h2>
+<p>By Wei He <em>github@weispot.com</em></p>
+<style>
+* {
+  text-align: center;
+}
+</style>
+<script>
+fetch('https://compressor-api.whe.technology/version')
+  .then(function(res) {
+    return res.text()
+  })
+  .then(function(text) {
+    document.querySelector('h2').innerHTML = 'Using http-minify verion ' + text
+  })
+</script>
