@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+.publish/
+dist/
+public/**/*.js*
+public/**/*.css
+public/**/*.html

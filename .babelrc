@@ -1,0 +1,8 @@
+{
+  "presets": ["latest"],
+  "env": {
+    "production": {
+      "presets": ["babili"]
+    }
+  }
+}

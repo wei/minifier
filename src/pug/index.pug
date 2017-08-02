@@ -1,0 +1,25 @@
+doctype html
+html(class='no-js')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    title Compressor
+
+    meta(name='description', content='Simple web interface for compressing HTML, JS, CSS using html-minifier.')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='css/index.css')
+  body
+    //if lt IE 8
+      p.chromeframe.
+        You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a>
+        to improve your experience.
+    p Hello world! This is HTML5 Boilerplate.
+
+    script(src='lib/htmlminifier.min.js')
+    script.
+      window.Minify = require('html-minifier').minify;
+    script(src='js/index.js')
+    noscript #{__HASH} built on #{__BUILD_DATE}'

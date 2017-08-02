@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": "airbnb-base",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "no-console": 0,
+    "func-names": 0,
+    "max-len": [2, {
+      "code": 120,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreTemplateLiterals": true
+    }]
+  }
+}
