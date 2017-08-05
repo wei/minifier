@@ -73,7 +73,6 @@ const selectLanguage = (type = '') => {
     outputFileName.placeholder = `edit-me${type ? `.${type}` : ''}`;
     const mode = TYPE_TO_MODE[type];
     inputCM.setOption('mode', mode);
-    inputCM.focus();
     outputCM.setOption('mode', mode);
     runMinify(type);
   }
@@ -101,6 +100,7 @@ Object.keys(selectionButtons).forEach((lang) => {
   selectionButtons[lang].addEventListener('click', (e) => {
     e.preventDefault();
     selectLanguage(lang);
+    inputCM.focus();
   });
 });
 

@@ -4,9 +4,9 @@ html(class='no-js')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
 
-    title Compressor
+    title Compressor for JavaScript, CSS and HTML
 
-    meta(name='description', content='Simple web interface for compressing HTML, JS, CSS using html-minifier.')
+    meta(name='description', content='Client-side offline-first JavaScript/CSS/HTML minifier.')
     meta(name='viewport', content='width=device-width, initial-scale=1')
 
     link(rel='stylesheet', href='css/index.css')
@@ -51,7 +51,6 @@ html(class='no-js')
             path(style='fill:#EC6630;', d='M23.207,16.293c-0.391-0.391-1.023-0.391-1.414,0l-6,6c-0.391,0.391-0.391,1.023,0,1.414l6,6 C21.988,29.902,22.244,30,22.5,30s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L17.914,23l5.293-5.293 C23.598,17.316,23.598,16.684,23.207,16.293z')
             path(style='fill:#EC6630;', d='M41.207,22.293l-6-6c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L39.086,23 l-5.293,5.293c-0.391,0.391-0.391,1.023,0,1.414C33.988,29.902,34.244,30,34.5,30s0.512-0.098,0.707-0.293l6-6 C41.598,23.316,41.598,22.684,41.207,22.293z')
 
-
   body
     //if lt IE 8
       p.chromeframe.
@@ -61,16 +60,17 @@ html(class='no-js')
     h1 Compressor
     
     p.subheading
-      | Client-side offline-first JS/CSS/HTML minifier. 
-      | Implements 
-      a(href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API' target='_blank') 
-        i.fa.fa-lock
-        |  Web Worker 
-      | and 
-      a(href='https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API' target='_blank') 
-        i.fa.fa-lock
-        |  Service Worker 
-      | . 
+      span Client-side offline-first JavaScript/CSS/HTML minifier. 
+      span &nbsp;
+        | Using 
+        a(href='https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API' target='_blank') 
+          i.fa.fa-lock
+          |  Web Worker 
+        |  and 
+        a(href='https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API' target='_blank') 
+          i.fa.fa-lock
+          |  Service Worker 
+        | . 
 
     div#code-wrapper-container
       div.code-wrapper#input-code-wrapper
@@ -152,7 +152,7 @@ html(class='no-js')
         a(href='https://www.flaticon.com/packs/file-types', target='_blank') Madebyoliver
         |  from Flaticon.
 
-    script(src='lib/d/htmlminifier.min.js')
+    script(src='htmlminifier.min.js')
     script.
       window.Minify = require('html-minifier').minify;
     script(src='js/index.js')

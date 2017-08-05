@@ -1,7 +1,7 @@
 /* eslint-env worker */
 
 (function () {
-  importScripts('lib/d/htmlminifier.min.js');
+  importScripts('htmlminifier.min.js');
   const Minify = require('html-minifier').minify;  // eslint-disable-line
   addEventListener('message', (event) => {
     if (event.data.pong) {
