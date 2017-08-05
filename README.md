@@ -1,8 +1,14 @@
 Compressor
 ==========
-Client-side offline-first JavaScript/CSS/HTML minifier. Just load it once and it will available for offline use.
+Client-side offline-first JavaScript/CSS/HTML minifier.
 
 Visit: https://compressor.whe.technology
+
+## Description
+
+This tool implements [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) and [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API). Just load it once and it will available for offline use.
+
+Uses [html-minifier@3.5.3](https://github.com/kangax/html-minifier) which comes with [uglify-js@3.0.x](https://github.com/mishoo/UglifyJS2) and [clean-css@4.1.x](https://github.com/jakubpawlowicz/clean-css). See [default configuration](minify-config.json).
 
 
 ## Installation
