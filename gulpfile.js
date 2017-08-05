@@ -56,6 +56,7 @@ gulp.task('less', () => {
     .pipe(plugins.less({
       paths: ['node_modules', 'bower_components'],
     }))
+    .pipe(plugins.replace(/(fontello\.(?:eot|woff2?|ttf|svg))\?[\d]+/g, '$1'))
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.autoprefixer({
       browsers: ['last 2 versions'],
@@ -93,13 +94,13 @@ gulp.task('download-script', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(['./node_modules/font-awesome/fonts/fontawesome-webfont.*'])
-    .pipe(gulp.dest(`${outputRoot}/fonts/`));
+  return gulp.src(['./src/fonts/fontello/font/fontello.*'])
+    .pipe(gulp.dest(`${outputRoot}/font/`));
 });
 
 gulp.task('service-worker', () => {
   swPrecache.write(`${outputRoot}/service-worker.js`, {
-    staticFileGlobs: [`${outputRoot}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}`],
+    staticFileGlobs: [`${outputRoot}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
     stripPrefix: outputRoot,
   }, () => {
     gulp.src(`${outputRoot}/service-worker.js`)

@@ -1,14 +1,13 @@
-@window-bar-color: #737373;
-@window-bar-bg-color: #ececec;
-
-html {
-}
-
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #fff;
   font-weight: 200;
   background: #454369 url("../images/bg-main.png");
+}
+
+[class*=" icon-"]:before,
+[class^=icon-]:before {
+  margin: 0;
 }
 
 h1 {
@@ -61,16 +60,16 @@ div#code-wrapper-container {
       border-bottom-right-radius: 3px;
 
       div.CodeMirror-gutters {
-        background-color: fade(@window-bar-bg-color, 70%);
+        background-color: fade(@color-window-bar-bg, 70%);
       }
 
       div.CodeMirror-linenumber {
-        color: @window-bar-color;
+        color: @color-window-bar;
       }
     }
 
     div.window-header {
-      background: @window-bar-bg-color;
+      background: @color-window-bar-bg;
       padding: 9px;
       position: relative;
       border-top: 1px solid #f2f1f2;
@@ -98,7 +97,7 @@ div#code-wrapper-container {
         text-align: center;
         font-weight: 200;
         border: none;
-        color: @window-bar-color;
+        color: @color-window-bar;
       }
 
       div.right-button-group {
@@ -107,12 +106,12 @@ div#code-wrapper-container {
         top: 6px;
         border-radius: 5px;
         overflow: hidden;
-        box-shadow: 0 0 20px darken(@window-bar-bg-color, 20%);
+        box-shadow: 0 0 20px darken(@color-window-bar-bg, 20%);
 
         a {
           display: inline-block;
           background: #fff;
-          color: @window-bar-color;
+          color: @color-window-bar;
           font-size: 14px;
           padding: 4px 8px;
           border-left: 1px solid #e0e0e0;
@@ -123,7 +122,7 @@ div#code-wrapper-container {
           }
 
           &:hover {
-            background: @window-bar-color;
+            background: @color-window-bar;
             color: #fff;
           }
         }
@@ -213,7 +212,7 @@ div#code-wrapper-container {
 
     a.select-button {
       &#select-js {
-        background: @window-bar-color;
+        background: @color-window-bar;
         color: #fff;
       }
     }
@@ -236,7 +235,7 @@ div#code-wrapper-container {
 
     a.select-button {
       &#select-css {
-        background: @window-bar-color;
+        background: @color-window-bar;
         color: #fff;
       }
     }
@@ -259,7 +258,7 @@ div#code-wrapper-container {
 
     a.select-button {
       &#select-html {
-        background: @window-bar-color;
+        background: @color-window-bar;
         color: #fff;
       }
     }

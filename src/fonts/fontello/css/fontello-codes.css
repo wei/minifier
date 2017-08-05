@@ -1,0 +1,6 @@
+
+.icon-trash-empty:before { content: '\e800'; } /* '' */
+.icon-download:before { content: '\e801'; } /* '' */
+.icon-lock:before { content: '\e802'; } /* '' */
+.icon-github-circled:before { content: '\f09b'; } /* '' */
+.icon-paste:before { content: '\f0ea'; } /* '' */

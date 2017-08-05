@@ -51,7 +51,7 @@ const runMinify = debounce((type) => {
         outputCM.setOption('mode', TYPE_TO_MODE[type]);
         outputCM.getDoc().setValue(output);
       }, (err) => {
-        outputCM.setOption('mode', 'null');
+        outputCM.setOption('mode', TYPE_TO_MODE['']);
         outputCM.getDoc().setValue(err.message);
       });
     }
@@ -125,7 +125,7 @@ document.getElementById('download').addEventListener('click', (e) => {
 });
 
 
-// Check Local Storage
+// Check Local Storage on first load
 try {
   const inputText = window.localStorage.getItem('compressor.input');
   const type = window.localStorage.getItem('compressor.type');
