@@ -25,7 +25,7 @@ gulp.task('clean-css', () => gulp.src('./public/css', { read: false })
   .pipe(plugins.clean()));
 gulp.task('less', ['clean-css'], () => gulp.src('./src/less/index.less')
   .pipe(plugins.less({
-    paths: ['node_modules'],
+    paths: ['node_modules', 'bower_components'],
   }))
   .pipe(gulp.dest('./public/css')));
 
@@ -48,11 +48,18 @@ gulp.task('pug', () => {
     .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('lib', () => plugins.download(
+gulp.task('bower', () => gulp.src('./bower.json')
+  .pipe(plugins.mainBowerFiles())
+  .pipe(plugins.flatten())
+  .pipe(gulp.dest('./public/lib/b')));
+gulp.task('lib', ['bower'], () => plugins.download(
   [
     'https://cdnjs.cloudflare.com/ajax/libs/html-minifier/3.5.3/htmlminifier.min.js',
   ])
-  .pipe(gulp.dest('./public/lib/')));
+  .pipe(gulp.dest('./public/lib/d/')));
+
+gulp.task('fonts', () => gulp.src(['./node_modules/font-awesome/fonts/fontawesome-webfont.*'])
+  .pipe(gulp.dest('./public/fonts/')));
 
 gulp.task('service-worker', (callback) => {
   const rootDir = './public';
@@ -70,7 +77,6 @@ gulp.task('web-worker', () => gulp.src('./src/web-worker.js')
 gulp.task('webserver', () => gulp.src('./public')
   .pipe(plugins.webserver({
     port: PORT,
-    fallback: 'index.html',
   })));
 
 gulp.task('deploy', () => gulp.src('./dist/**/*')
@@ -79,8 +85,9 @@ gulp.task('deploy', () => gulp.src('./dist/**/*')
 gulp.task('default', ['build']);
 gulp.task('build', (callback) => {
   plugins.sequence(
-    'lib',
-    ['js', 'less', 'pug', 'web-worker'],
+    ['lib', 'fonts'],
+    ['js', 'less', 'web-worker'],
+    'pug',
     'service-worker')(callback);
 });
 

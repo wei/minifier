@@ -59,6 +59,11 @@ typings/
 
 .publish/
 dist/
-public/**/*.js*
-public/**/*.css
+public/js/
+public/*.js*
+public/css/
+public/*.css
 public/**/*.html
+public/lib/b/
+public/lib/d/
+public/fonts/
