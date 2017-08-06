@@ -1,7 +1,7 @@
 {
   "name": "compressor",
   "version": "1.0.0",
-  "description": "Simple web interface for compressing HTML, JS, CSS using html-minifier.",
+  "description": "Client-side offline-first JavaScript/CSS/HTML minifier.",
   "repository": {
     "type": "git",
     "url": "git@github.com:ddhhz/compressor.git"
@@ -9,10 +9,17 @@
   "scripts": {
     "eslint": "echo '\n[INFO] Running ESLint...\n' && eslint ./src/js ./*.js --ignore-path .gitignore -f table --ext .js --fix",
     "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)",
+    "build": "gulp",
+    "watch": "gulp watch",
+    "deploy": "cross-env NODE_ENV=production gulp && gulp deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Wei He <github@weispot.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ddhhz/compressor/issues"
+  },
+  "homepage": "https://compressor.whe.technology",
   "dependencies": {
     "clipboard": "^1.7.1",
     "codemirror": "^5.28.0",
@@ -22,6 +29,7 @@
     "babel-preset-latest": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
+    "cross-env": "^5.0.3",
     "dotenv": "^4.0.0",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",

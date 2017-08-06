@@ -21,6 +21,19 @@ const TYPE_TO_MODE = {
   '': 'null',
 };
 
+const codeWrapperContainer = document.getElementById('code-wrapper-container');
+const outputFileName = document.getElementById('output-filename');
+const selectionButtons = {
+  js: document.getElementById('select-js'),
+  css: document.getElementById('select-css'),
+  html: document.getElementById('select-html'),
+};
+const minifyButtons = {
+  js: document.getElementById('minify-js'),
+  css: document.getElementById('minify-css'),
+  html: document.getElementById('minify-html'),
+};
+
 const inputCM = CodeMirror.fromTextArea(document.getElementById('input-code'), {
   lineNumbers: true,
   theme: 'neo',
@@ -58,9 +71,6 @@ const runMinify = debounce((type) => {
   }
 }, 400);
 
-const codeWrapperContainer = document.getElementById('code-wrapper-container');
-const outputFileName = document.getElementById('output-filename');
-
 const selectLanguage = (type = '') => {
   if (currentType !== type) {
     currentType = type;
@@ -78,29 +88,15 @@ const selectLanguage = (type = '') => {
   }
 };
 
-const minifyButtons = {
-  js: document.getElementById('minify-js'),
-  css: document.getElementById('minify-css'),
-  html: document.getElementById('minify-html'),
-};
-const selectionButtons = {
-  js: document.getElementById('select-js'),
-  css: document.getElementById('select-css'),
-  html: document.getElementById('select-html'),
-};
-
-Object.keys(minifyButtons).forEach((lang) => {
-  minifyButtons[lang].addEventListener('click', (e) => {
-    e.preventDefault();
-    selectLanguage(lang);
-  });
-});
-
-Object.keys(selectionButtons).forEach((lang) => {
+['js', 'css', 'html'].forEach((lang) => {
   selectionButtons[lang].addEventListener('click', (e) => {
     e.preventDefault();
     selectLanguage(lang);
     inputCM.focus();
+  });
+  minifyButtons[lang].addEventListener('click', (e) => {
+    e.preventDefault();
+    selectLanguage(lang);
   });
 });
 
@@ -124,6 +120,24 @@ document.getElementById('download').addEventListener('click', (e) => {
       { type: 'text/plain;charset=utf-8' }));
 });
 
+inputCM.on('changes', () => {
+  if (currentType) {
+    runMinify(currentType);
+  }
+});
+
+inputCM.on('drop', (cm, dragEvent) => {
+  try {
+    const matches = dragEvent.dataTransfer.files[0].name.match(/\.(js|css|html)$/);
+    if (matches && matches[1]) {
+      selectLanguage(matches[1]);
+      cm.getDoc().setValue(''); // Clear input field for dropped file.
+    }
+  } catch (_) {
+    // Ignore fetch filename errors
+  }
+});
+
 
 // Check Local Storage on first load
 try {
@@ -136,21 +150,3 @@ try {
 } catch (_) {
   // Ignore localStorage errors
 }
-
-inputCM.on('changes', () => {
-  if (currentType) {
-    runMinify(currentType);
-  }
-});
-
-inputCM.on('drop', (cm, dragEvent) => {
-  try {
-    const matches = dragEvent.dataTransfer.files[0].name.match(/\.(js|css|html)$/);
-    if (matches && matches[1]) {
-      selectLanguage(matches[1]);
-      cm.getDoc().setValue('');
-    }
-  } catch (_) {
-    // Ignore fetch filename errors
-  }
-});

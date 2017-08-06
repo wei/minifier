@@ -119,42 +119,62 @@ html(class='no-js')
           i.icon-github-circled
           | ddhhz/compressor
         | . 
-        a(href='https://github.com/ddhhz/compressor/blob/master/LICENSE', target='_blank') MIT License
-        | . View 
-        a(href='https://github.com/ddhhz/compressor/blob/master/minify-config.json', target='_blank') 
-          i.icon-lock
-          | http-minifier configurations
-        | . 
       p
-        | Uses 
-        a(href='https://github.com/kangax/html-minifier', target='_blank')
-          i.icon-github-circled
-          | html-minifier@3.5.3
-        |  which includes 
-        a(href='https://github.com/mishoo/UglifyJS2', target='_blank')
-          i.icon-github-circled
-          | uglify-js@3.0.x
-        |  and 
-        a(href='https://github.com/jakubpawlowicz/clean-css', target='_blank')
-          i.icon-github-circled
-          | clean-css@4.1.x
-        | . 
+        | If you find this tool useful, 
+        a(href='https://o.whe.me/supportwei', target='_blank') 
+          | please consider supporting me by 
+          i.icon-lock
+          | buying me a coffee.
       small
+        a(href='https://github.com/ddhhz/compressor/blob/master/LICENSE', target='_blank') 
+          i.icon-lock
+          | MIT License
+        | . View 
+        a(href='https://github.com/ddhhz/compressor/blob/master/minify-config.json', target='_blank') http-minifier configurations
+        | . Uses 
+        a(href='https://github.com/kangax/html-minifier', target='_blank') html-minifier@3.5.3
+        | &nbsp;which comes with 
+        a(href='https://github.com/mishoo/UglifyJS2', target='_blank') uglify-js@3.0.x
+        | &nbsp;and&nbsp;
+        a(href='https://github.com/jakubpawlowicz/clean-css', target='_blank') clean-css@4.1.x
+        | .
+        br
         | Based on 
-        a(href='http://kangax.github.com/html-minifier/', target='_blank') 
-          i.icon-github-circled
-          | kangax/html-minifier
+        a(href='http://kangax.github.com/html-minifier/', target='_blank') kangax/html-minifier
         | . Design Inspired by 
-        a(href='https://kazzkiq.github.io/CodeFlask.js/', target='_blank') 
-          i.icon-github-circled
-          | kazzkiq/CodeFlask.js
+        a(href='https://kazzkiq.github.io/CodeFlask.js/', target='_blank') kazzkiq/CodeFlask.js
         | . File type icons are made by 
         a(href='https://www.flaticon.com/packs/file-types', target='_blank') Madebyoliver
-        |  from Flaticon.
+        | &nbsp;from Flaticon.
 
     script(src='htmlminifier.min.js')
     script.
       window.Minify = require('html-minifier').minify;
     script(src='js/index.js')
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    noscript #{__HASH} built on #{__BUILD_DATE}'
+      ga('create', 'UA-18952818-15', 'auto');
+      ga('send', 'pageview');
+      
+      for (var links = document.links, i = 0, length = links.length; i < length; i++) {
+        var link = links[i];
+        if (link.hostname != window.location.hostname) {
+          link.onclick = function(e) {
+            var url = e.target.href;
+            var openingInNewWindow = (e.target.target && !e.target.target.match(/^_(self|parent|top)$/i)) || e.ctrlKey || e.shiftKey || e.metaKey;
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': openingInNewWindow ? null : function() {
+                document.location = url;
+              }
+            });
+            return openingInNewWindow;
+          }
+        }
+      }
+
+    noscript #{__HASH} built on #{__BUILD_DATE}

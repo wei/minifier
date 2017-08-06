@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 3000;
 const isProd = process.env.NODE_ENV === 'production';
 const outputRoot = isProd ? './dist' : './public';
 
+console.log(`NODE_ENV=${process.env.NODE_ENV}`);
+
 gulp.task('clean-output-root', () => {
   return gulp.src(`${outputRoot}`, {
     read: false,
@@ -68,11 +70,11 @@ gulp.task('less', () => {
 
 gulp.task('pug', () => {
   const data = {
-    __HASH: 'Not Available',
+    __HASH: '',
     __BUILD_DATE: new Date().toUTCString(),
   };
   try {
-    data.GIT_HASH = exec('git rev-parse --short HEAD', 1000).stdout.replace('\n', '') || 'Not Available';
+    data.GIT_HASH = exec('git rev-parse --short HEAD', 1000).stdout.replace('\n', '') || '';
   } catch (e) {
     console.error(e);
   }
