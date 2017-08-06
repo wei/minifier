@@ -7,8 +7,9 @@
     "url": "git@github.com:ddhhz/compressor.git"
   },
   "scripts": {
-    "eslint": "echo '\n[INFO] Running ESLint...\n' && eslint ./src/js ./*.js --ignore-path .gitignore -f table --ext .js --fix",
     "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)",
+    "check-eslint": "echo '\n[INFO] Running ESLint...\n' && eslint ./src/js ./*.js --ignore-path .gitignore -f table --ext .js",
+    "eslint": "eslint ./src/js ./*.js --ignore-path .gitignore -f table --ext .js --fix || true",
     "build": "gulp",
     "watch": "gulp watch",
     "deploy": "cross-env NODE_ENV=production gulp && gulp deploy",
@@ -64,6 +65,6 @@
   },
   "pre-commit": [
     "check-extraneous-pkgs",
-    "eslint"
+    "check-eslint"
   ]
 }

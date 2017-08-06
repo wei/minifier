@@ -16,6 +16,12 @@ const PORT = process.env.PORT || 3000;
 const isProd = process.env.NODE_ENV === 'production';
 const outputRoot = isProd ? './dist' : './public';
 
+const uglifyConfig = {
+  compress: {
+    drop_console: true,
+  },
+};
+
 console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 
 gulp.task('clean-output-root', () => {
@@ -48,7 +54,7 @@ gulp.task('js', () => {
     .pipe(plugins.sourcemaps.init({
       loadMaps: true,
     }))
-    .pipe(plugins.if(isProd, plugins.uglify()))
+    .pipe(plugins.if(isProd, plugins.uglify(uglifyConfig)))
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(`${outputRoot}/js`));
 });
@@ -108,7 +114,7 @@ gulp.task('service-worker', () => {
     gulp.src(`${outputRoot}/service-worker.js`)
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.babel())
-      .pipe(plugins.if(isProd, plugins.uglify()))
+      .pipe(plugins.if(isProd, plugins.uglify(uglifyConfig)))
       .pipe(plugins.sourcemaps.write('.'))
       .pipe(gulp.dest(`${outputRoot}/`));
   });
@@ -118,7 +124,7 @@ gulp.task('web-worker', () => {
   return gulp.src('./src/web-worker.js')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.babel())
-    .pipe(plugins.if(isProd, plugins.uglify()))
+    .pipe(plugins.if(isProd, plugins.uglify(uglifyConfig)))
     .pipe(plugins.sourcemaps.init())
     .pipe(gulp.dest(`${outputRoot}/`));
 });
