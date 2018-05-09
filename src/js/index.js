@@ -2,7 +2,7 @@ import CodeMirror from 'codemirror';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
-import Clipboard from 'clipboard';
+import Clipboard from 'clipboard/dist/clipboard.min';
 import FileSaver from 'file-saver';
 
 import SWHelper from './service-worker-helper';
@@ -107,7 +107,7 @@ document.getElementById('reset').addEventListener('click', (e) => {
   selectLanguage('');
 });
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 new Clipboard('#copy', {
   text() {
     return outputCM.getDoc().getValue();

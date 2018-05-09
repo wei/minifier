@@ -23,6 +23,7 @@
       "ignoreRegExpLiterals": true,
       "ignoreTemplateLiterals": true
     }],
+    "function-paren-newline": 0,
     "arrow-body-style": 0
   }
 }

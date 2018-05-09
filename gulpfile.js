@@ -42,7 +42,7 @@ gulp.task('js', () => {
     entries: './src/js/index.js',
   })
     .transform(babelify.configure({
-      presets: ['latest'],
+      presets: ['env'],
       ignore: /(bower_components)|(node_modules)/,
     }))
     .bundle()

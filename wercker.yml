@@ -1,0 +1,11 @@
+box: node
+build:
+  steps:
+    - script:
+      name: npm run build
+      code: |
+        echo "node version $(node -v)"
+        echo "npm version $(npm -v)"
+        echo "NODE_ENV=$NODE_ENV"
+        npm install
+        npm run build

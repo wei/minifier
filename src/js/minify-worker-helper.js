@@ -41,7 +41,7 @@ module.exports = (function () {
           console.log('In MinifyHelper.workerMinify');
 
           MinifyHelper.webWorker.onmessage = function (event) {
-            const data = event.data;
+            const { data } = event;
             if (data.error) {
               errorCallback(new Error(data.error));
             } else {
