@@ -1,5 +1,7 @@
 Compressor for JavaScript, CSS and HTML
 =======================================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ddhhz/compressor.svg)](https://greenkeeper.io/)
 Client-side offline-first JavaScript/CSS/HTML minifier. _Visit: https://compressor.whe.technology_
 
 
