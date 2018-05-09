@@ -1,10 +1,10 @@
 {
-  "name": "compressor",
+  "name": "minifier",
   "version": "1.0.0",
   "description": "Client-side offline-first JavaScript/CSS/HTML minifier.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ddhhz/compressor.git"
+    "url": "git@github.com:ddhhz/minifier.git"
   },
   "scripts": {
     "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)",
@@ -18,9 +18,9 @@
   "author": "Wei He <github@weispot.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ddhhz/compressor/issues"
+    "url": "https://github.com/ddhhz/minifier/issues"
   },
-  "homepage": "https://compressor.whe.technology",
+  "homepage": "https://minifier.app",
   "dependencies": {
     "clipboard": "^2.0.1",
     "codemirror": "^5.37.0",
@@ -42,7 +42,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
-    "gulp-download": "0.0.1",
+    "gulp-download-stream": "0.0.19",
     "gulp-filter": "^5.1.0",
     "gulp-flatten": "^0.4.0",
     "gulp-gh-pages": "^0.5.4",

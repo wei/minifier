@@ -53,7 +53,7 @@ const runMinify = debounce((type) => {
   const input = inputCM.getDoc().getValue();
   if (type) {
     try {
-      window.localStorage.setItem('compressor.input', input);
+      window.localStorage.setItem('minifier.input', input);
     } catch (_) {
       // Ignore localStorage errors
     }
@@ -75,7 +75,7 @@ const selectLanguage = (type = '') => {
   if (currentType !== type) {
     currentType = type;
     try {
-      window.localStorage.setItem('compressor.type', currentType);
+      window.localStorage.setItem('minifier.type', currentType);
     } catch (_) {
       // Ignore localStorage errors
     }
@@ -141,8 +141,8 @@ inputCM.on('drop', (cm, dragEvent) => {
 
 // Check Local Storage on first load
 try {
-  const inputText = window.localStorage.getItem('compressor.input');
-  const type = window.localStorage.getItem('compressor.type');
+  const inputText = window.localStorage.getItem('minifier.input');
+  const type = window.localStorage.getItem('minifier.type');
   if (inputText && inputText.trim() && type) {
     inputCM.getDoc().setValue(inputText);
     selectLanguage(type);

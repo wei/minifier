@@ -60,3 +60,4 @@ typings/
 .publish/
 dist/
 public/
+htmlminifier.min.js
