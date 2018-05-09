@@ -96,7 +96,7 @@ gulp.task('pug', () => {
 
 gulp.task('download-script', () => {
   return plugins.download([
-    'https://cdnjs.cloudflare.com/ajax/libs/html-minifier/3.5.3/htmlminifier.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/html-minifier/3.5.15/htmlminifier.min.js',
   ])
     .pipe(gulp.dest('./src/assets/'));
 });
