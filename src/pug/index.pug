@@ -131,7 +131,7 @@ html(class='no-js')
         | . View http-minifier 
         a(href='https://github.com/wei/minifier/blob/master/minify-config.json', target='_blank') default configurations
         | . Uses 
-        a(href='https://github.com/kangax/html-minifier', target='_blank') html-minifier
+        a(href='https://github.com/kangax/html-minifier', target='_blank') html-minifier#{__ENV.HTTPMINIFIER_VERSION ? '@' + __ENV.HTTPMINIFIER_VERSION : ''}
         | &nbsp;which comes with 
         a(href='https://github.com/mishoo/UglifyJS2', target='_blank') uglify-js
         | &nbsp;and&nbsp;
@@ -151,11 +151,10 @@ html(class='no-js')
       window.Minify = require('html-minifier').minify;
     script(src='js/index.js')
     script.
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
+      !function(m,i,n,_,f,y){m.GoogleAnalyticsObject=n;m[n]||(m[n]=function(){
+      (m[n].q=m[n].q||[]).push(arguments)});m[n].l=+new Date;f=i.createElement(_);
+      y=i.getElementsByTagName(_)[0];f.src='//www.google-analytics.com/analytics.js';
+      y.parentNode.insertBefore(f,y)}(window,document,'ga','script');
       ga('create', 'UA-18952818-15', 'auto');
       ga('send', 'pageview');
       
@@ -197,4 +196,4 @@ html(class='no-js')
         }
       }
 
-    noscript #{__HASH} built on #{__BUILD_DATE}
+    noscript Version #{__BRANCH}##{__HASH} Built @ #{__BUILD_DATE}

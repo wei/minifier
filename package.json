@@ -58,7 +58,6 @@
     "normalize.css": "^8.0.0",
     "pre-commit": "^1.2.2",
     "sw-precache": "^5.2.1",
-    "sync-exec": "^0.6.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },

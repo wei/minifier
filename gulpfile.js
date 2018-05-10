@@ -1,5 +1,5 @@
 require('dotenv').config();
-const exec = require('sync-exec');
+const childProcess = require('child_process');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'gulp.*', 'main-bower-files'],
@@ -12,6 +12,7 @@ const buffer = require('vinyl-buffer');
 const swPrecache = require('sw-precache');
 
 const PORT = process.env.PORT || 3000;
+const HTTPMINIFIER_VERSION = process.env.HTTPMINIFIER_VERSION;
 
 const isProd = process.env.NODE_ENV === 'production';
 const outputRoot = isProd ? './dist' : './public';
@@ -77,10 +78,15 @@ gulp.task('less', () => {
 gulp.task('pug', () => {
   const data = {
     __HASH: '',
-    __BUILD_DATE: new Date().toUTCString(),
+    __BRANCH: '',
+    __BUILD_DATE: new Date().toISOString(),
+    __ENV: process.env,
   };
   try {
-    data.GIT_HASH = exec('git rev-parse --short HEAD', 1000).stdout.replace('\n', '') || '';
+    data.__HASH = process.env.COMMIT_REF ||
+      childProcess.execSync('git rev-parse --short HEAD').toString().trim() || '';
+    data.__BRANCH = process.env.BRANCH ||
+      childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().trim() || '';
   } catch (e) {
     console.error(e);
   }
@@ -96,7 +102,7 @@ gulp.task('pug', () => {
 
 gulp.task('download-script', () => {
   return plugins.downloadStream([
-    'https://cdnjs.cloudflare.com/ajax/libs/html-minifier/3.5.15/htmlminifier.min.js',
+    `https://raw.githubusercontent.com/kangax/html-minifier/${HTTPMINIFIER_VERSION ? `v${HTTPMINIFIER_VERSION}` : 'gh-pages'}/dist/htmlminifier.min.js`,
   ])
     .pipe(gulp.dest('./src/assets/'));
 });

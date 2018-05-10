@@ -137,8 +137,8 @@ inputCM.on('changes', (doc) => {
     // Detect Type
     const detectedType = ((text) => {
       if (text.match(/^\s*</)) return 'html';
-      if (text.match(/^(?:\s*\S+\s*{[^}]*})+/)) return 'css';
       try { Function(text); return 'js'; } catch (_) { /* Do Nothing */ } // eslint-disable-line no-new-func
+      if (text.match(/^(?:\s*\S+\s*{[^}]*})+/)) return 'css';
       return 'html';
     })(doc.getValue());
     selectLanguage(detectedType);
