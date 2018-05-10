@@ -12,7 +12,9 @@ Uses [html-minifier](https://github.com/kangax/html-minifier) which comes with [
 
 ## Installation
 ```bash
-$ npm install && npm run build
+$ export HTTPMINIFIER_VERSION=3.5.15  # Optional, Default to latest
+
+$ npm i && npm run build
 ```
 
 Start development server:
@@ -23,7 +25,7 @@ $ npm run watch
 
 ## Questions?
 
-Please [open an issue](https://github.com/ddhhz/minifier/issues) or [email me](mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#119;&#101;&#105;&#115;&#112;&#111;&#116;&#046;&#099;&#111;&#109;) with any issues, feedback, or suggestions.
+Please [open an issue](https://github.com/wei/minifier/issues) or [email me](mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#119;&#101;&#105;&#115;&#112;&#111;&#116;&#046;&#099;&#111;&#109;) with any issues, feedback, or suggestions.
 
 
 ## Author

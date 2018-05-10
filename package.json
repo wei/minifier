@@ -4,7 +4,7 @@
   "description": "Client-side offline-first JavaScript/CSS/HTML minifier.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ddhhz/minifier.git"
+    "url": "git@github.com:wei/minifier.git"
   },
   "scripts": {
     "check-extraneous-pkgs": "npm list --depth=0 && echo '[SUCCESS] No extraneous packages.' || (echo '[INFO] Pruning extraneous packages...\n' && npm prune)",
@@ -18,7 +18,7 @@
   "author": "Wei He <github@weispot.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ddhhz/minifier/issues"
+    "url": "https://github.com/wei/minifier/issues"
   },
   "homepage": "https://minifier.app",
   "dependencies": {
