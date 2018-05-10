@@ -22,6 +22,7 @@ const TYPE_TO_MODE = {
 };
 
 const codeWrapperContainer = document.getElementById('code-wrapper-container');
+let droppedFileName = null;
 const outputFileName = document.getElementById('output-filename');
 const selectionButtons = {
   js: document.getElementById('select-js'),
@@ -72,6 +73,7 @@ const runMinify = debounce((type) => {
 }, 400);
 
 const selectLanguage = (type = '') => {
+  outputFileName.placeholder = `${droppedFileName || 'edit-me'}${type ? `.${type}` : ''}`;
   if (currentType !== type) {
     currentType = type;
     try {
@@ -80,7 +82,6 @@ const selectLanguage = (type = '') => {
       // Ignore localStorage errors
     }
     codeWrapperContainer.className = type;
-    outputFileName.placeholder = `edit-me${type ? `.${type}` : ''}`;
     const mode = TYPE_TO_MODE[type];
     inputCM.setOption('mode', mode);
     outputCM.setOption('mode', mode);
@@ -104,6 +105,7 @@ document.getElementById('reset').addEventListener('click', (e) => {
   e.preventDefault();
   inputCM.getDoc().setValue('');
   outputCM.getDoc().setValue('');
+  droppedFileName = null;
   selectLanguage('');
 });
 
@@ -120,18 +122,46 @@ document.getElementById('download').addEventListener('click', (e) => {
       { type: 'text/plain;charset=utf-8' }));
 });
 
-inputCM.on('changes', () => {
-  if (currentType) {
-    runMinify(currentType);
+inputCM.on('changes', (doc) => {
+  if (!doc.getValue()) {
+    outputCM.getDoc().setValue('');
+    droppedFileName = null;
+    selectLanguage('');
+    return;
   }
+
+  if (currentType) {
+    selectLanguage(currentType);
+    runMinify(currentType);
+  } else {
+    // Detect Type
+    const detectedType = ((text) => {
+      if (text.match(/^\s*</)) return 'html';
+      if (text.match(/^(?:\s*\S+\s*{[^}]*})+/)) return 'css';
+      try { Function(text); return 'js'; } catch (_) { /* Do Nothing */ } // eslint-disable-line no-new-func
+      return 'html';
+    })(doc.getValue());
+    selectLanguage(detectedType);
+    runMinify(detectedType);
+  }
+});
+
+inputCM.on('paste', () => {
+  currentType = null;
+  droppedFileName = null;
 });
 
 inputCM.on('drop', (cm, dragEvent) => {
   try {
-    const matches = dragEvent.dataTransfer.files[0].name.match(/\.(js|css|html)$/);
+    const fileName = dragEvent.dataTransfer.files[0].name;
+    const matches = fileName.match(/\.(js|css|html)$/);
     if (matches && matches[1]) {
+      droppedFileName = fileName.replace(`.${matches[1]}`, '');
       selectLanguage(matches[1]);
       cm.getDoc().setValue(''); // Clear input field for dropped file.
+    } else {
+      alert('File type not supported.'); // eslint-disable-line no-alert
+      dragEvent.preventDefault();
     }
   } catch (_) {
     // Ignore fetch filename errors
