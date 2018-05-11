@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - node
+cache:
+  directories:
+    - node_modules
+env:
+  - NODE_ENV=production
+script:
+  - npm run eslint
+  - npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: dist
+  target-branch: gh-pages
+  github-token: $GITHUB_TOKEN
+  keep-history: true
