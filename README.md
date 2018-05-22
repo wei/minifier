@@ -4,6 +4,8 @@ Client-side offline-first JavaScript/CSS/HTML minifier. _Visit: https://minifier
 
 
 ## Description
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwei%2Fminifier.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwei%2Fminifier?ref=badge_shield)
+
 
 This tool implements [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) and [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API). Just load it once and it will available for offline use.
 
@@ -41,3 +43,6 @@ I am committed to delivering quality tools and keep them ad-free. Thank you for 
 
 ## License
 [MIT](LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwei%2Fminifier.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwei%2Fminifier?ref=badge_large)
