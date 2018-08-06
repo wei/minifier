@@ -83,10 +83,10 @@ gulp.task('pug', () => {
     __ENV: process.env,
   };
   try {
-    data.__HASH = (process.env.COMMIT_REF || '').substring(0, 7) ||
-      childProcess.execSync('git rev-parse --short HEAD').toString().trim() || '';
-    data.__BRANCH = process.env.BRANCH ||
-      childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().trim() || '';
+    data.__HASH = (process.env.COMMIT_REF || '').substring(0, 7)
+      || childProcess.execSync('git rev-parse --short HEAD').toString().trim() || '';
+    data.__BRANCH = process.env.BRANCH
+      || childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().trim() || '';
   } catch (e) {
     console.error(e);
   }
