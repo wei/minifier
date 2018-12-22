@@ -23,7 +23,7 @@
   "homepage": "https://minifier.app",
   "dependencies": {
     "clipboard": "^2.0.1",
-    "codemirror": "^5.39.2",
+    "codemirror": "^5.42.2",
     "file-saver": "^1.3.8",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
