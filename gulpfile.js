@@ -43,8 +43,8 @@ gulp.task('js', () => {
     entries: './src/js/index.js',
   })
     .transform(babelify.configure({
-      presets: ['env'],
-      ignore: /(bower_components)|(node_modules)/,
+      presets: ['@babel/env'],
+      ignore: ['bower_components', 'node_modules'],
     }))
     .bundle()
     .on('error', (err) => {
