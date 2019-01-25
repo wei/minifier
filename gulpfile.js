@@ -113,7 +113,7 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('service-worker', () => {
-  swPrecache.write(`${outputRoot}/service-worker.js`, {
+  return swPrecache.write(`${outputRoot}/service-worker.js`, {
     staticFileGlobs: [`${outputRoot}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
     stripPrefix: outputRoot,
   }, () => {
@@ -147,18 +147,15 @@ gulp.task('deploy', () => {
     .pipe(plugins.ghPages());
 });
 
-gulp.task('default', ['build']);
-gulp.task('build', (callback) => {
-  plugins.sequence(
-    ['clean-output-root', 'download-script'],
-    ['copy-assets', 'fonts', 'js', 'less', 'web-worker'],
-    'pug',
-    'service-worker')(callback);
-});
+gulp.task('build', gulp.series(
+  gulp.parallel('clean-output-root', 'download-script'),
+  gulp.parallel('copy-assets', 'fonts', 'js', 'less', 'web-worker'),
+  gulp.parallel('pug'),
+  gulp.parallel('service-worker')));
 
-gulp.task('watch', () => {
+gulp.task('watch', gulp.series(() => {
   function runner() {
-    return () => plugins.sequence(...arguments)(); // eslint-disable-line prefer-rest-params
+    return () => gulp.series(...arguments)(); // eslint-disable-line prefer-rest-params
   }
 
   plugins.watch(['./src/**/*.js'], {
@@ -176,6 +173,6 @@ gulp.task('watch', () => {
   plugins.watch(['./src/**/*.pug'], {
     read: false,
   }, runner('pug', 'service-worker'));
+}), 'webserver');
 
-  gulp.start(['webserver']);
-});
+gulp.task('default', gulp.parallel('build'));
