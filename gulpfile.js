@@ -28,6 +28,7 @@ console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 gulp.task('clean-output-root', () => {
   return gulp.src(`${outputRoot}`, {
     read: false,
+    allowEmpty: true,
   })
     .pipe(plugins.clean());
 });
