@@ -12,7 +12,7 @@ Uses [html-minifier](https://github.com/kangax/html-minifier) which comes with [
 
 ## Installation
 ```bash
-$ export HTTPMINIFIER_VERSION=3.5.15  # Optional, Default to latest
+$ export HTTPMINIFIER_VERSION=3.5.21  # Optional, Default to latest
 
 $ npm i && npm run build
 ```
