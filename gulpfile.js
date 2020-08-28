@@ -68,9 +68,7 @@ gulp.task('less', () => {
     }))
     .pipe(plugins.replace(/(fontello\.(?:eot|woff2?|ttf|svg))\?[\d]+/g, '$1'))
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.autoprefixer({
-      browsers: ['last 2 versions'],
-    }))
+    .pipe(plugins.autoprefixer())
     .pipe(plugins.if(isProd, plugins.cleanCss()))
     .pipe(plugins.sourcemaps.write('.'))
     .pipe(gulp.dest(`${outputRoot}/css`));
@@ -141,11 +139,6 @@ gulp.task('webserver', () => {
     .pipe(plugins.webserver({
       port: PORT,
     }));
-});
-
-gulp.task('deploy', () => {
-  return gulp.src('./dist/**/*')
-    .pipe(plugins.ghPages());
 });
 
 gulp.task('build', gulp.series(

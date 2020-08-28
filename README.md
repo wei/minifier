@@ -12,7 +12,7 @@ Uses [html-minifier](https://github.com/kangax/html-minifier) which comes with [
 
 ## Installation
 ```bash
-$ export HTTPMINIFIER_VERSION=3.5.21  # Optional, Default to latest
+$ export HTTPMINIFIER_VERSION=4.0.0  # Optional, Default to latest
 
 $ npm i && npm run build
 ```
@@ -30,13 +30,6 @@ Please [open an issue](https://github.com/wei/minifier/issues) or [email me](mai
 
 ## Author
 [**Wei He**](https://whe.me)  [_&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#119;&#101;&#105;&#115;&#112;&#111;&#116;&#046;&#099;&#111;&#109;_](mailto:&#103;&#105;&#116;&#104;&#117;&#098;&#064;&#119;&#101;&#105;&#115;&#112;&#111;&#116;&#046;&#099;&#111;&#109;)
-
-
-## Donations
-
-If you find this tool helpful, please consider supporting me by [sending me a coffee](https://o.whe.me/supportwei).
-
-I am committed to delivering quality tools and keep them ad-free. Thank you for your support!
 
 
 ## License

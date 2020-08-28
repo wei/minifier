@@ -168,7 +168,6 @@ inputCM.on('drop', (cm, dragEvent) => {
   }
 });
 
-
 // Check Local Storage on first load
 try {
   const inputText = window.localStorage.getItem('minifier.input');
