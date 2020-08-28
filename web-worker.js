@@ -1,1 +1,47 @@
-"use strict";!function(){importScripts("htmlminifier.min.js");var a=require("html-minifier").minify;addEventListener("message",function(e){if(!e.data.pong){var i=!1;try{var n=a(e.data.input,Object.assign({},e.data.config,{log:function(e){if(e instanceof Error){i=!0;var n="number"==typeof e.line?"Line ".concat(e.line,":").concat(e.col,"\n  "):"";postMessage({error:n+e.message})}}}));i||postMessage(n)}catch(e){var t="number"==typeof e.line?"Line ".concat(e.line,":").concat(e.col,"\n  "):"";postMessage({error:t+e.message})}}}),postMessage({ping:!0})}();
+"use strict";
+
+/* eslint-env worker */
+(function () {
+  importScripts('htmlminifier.min.js');
+
+  var Minify = require('html-minifier').minify; // eslint-disable-line
+
+
+  addEventListener('message', function (event) {
+    if (event.data.pong) {
+      return;
+    }
+
+    var loggedError = false;
+
+    var log = function log(msg) {
+      console.log(msg);
+
+      if (msg instanceof Error) {
+        loggedError = true;
+        var line = typeof msg.line === 'number' ? "Line ".concat(msg.line, ":").concat(msg.col, "\n  ") : '';
+        postMessage({
+          error: line + msg.message
+        });
+      }
+    };
+
+    try {
+      var output = Minify(event.data.input, Object.assign({}, event.data.config, {
+        log: log
+      }));
+
+      if (!loggedError) {
+        postMessage(output);
+      }
+    } catch (err) {
+      var line = typeof err.line === 'number' ? "Line ".concat(err.line, ":").concat(err.col, "\n  ") : '';
+      postMessage({
+        error: line + err.message
+      });
+    }
+  });
+  postMessage({
+    ping: true
+  });
+})();
