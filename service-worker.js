@@ -36,7 +36,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/css/index.css", "0710d5cf4e0d3a3593e4df7618842ac8"], ["/font/fontello.eot", "e5a945dd72ed9579b44f1926decc5d69"], ["/font/fontello.svg", "6cfcdb1a2abb96602932d4a2601d9c4e"], ["/font/fontello.ttf", "b732484010111a67bc53d44c88df79a0"], ["/font/fontello.woff", "c15f138b70af4f6b64e328b22c376c43"], ["/font/fontello.woff2", "26148360a55ef28c89c538de3c97ed5b"], ["/htmlminifier.min.js", "0ebc5fa8a4c912ad487c767a0b4fb73e"], ["/images/bg-main.png", "b099df35a7d9bc55229200256263759b"], ["/index.html", "6c71106342df336f2b20b608492dabe9"], ["/js/index.js", "6e7f9d05030d9c034a3422d522a7b54c"], ["/web-worker.js", "33516feabc112a44d1eba00c58c12daf"]];
+var precacheConfig = [["/css/index.css", "0710d5cf4e0d3a3593e4df7618842ac8"], ["/font/fontello.eot", "e5a945dd72ed9579b44f1926decc5d69"], ["/font/fontello.svg", "6cfcdb1a2abb96602932d4a2601d9c4e"], ["/font/fontello.ttf", "b732484010111a67bc53d44c88df79a0"], ["/font/fontello.woff", "c15f138b70af4f6b64e328b22c376c43"], ["/font/fontello.woff2", "26148360a55ef28c89c538de3c97ed5b"], ["/htmlminifier.min.js", "0ebc5fa8a4c912ad487c767a0b4fb73e"], ["/images/bg-main.png", "b099df35a7d9bc55229200256263759b"], ["/index.html", "411a1448705f77e4eecf6c77b9ac9a23"], ["/js/index.js", "6e7f9d05030d9c034a3422d522a7b54c"], ["/web-worker.js", "33516feabc112a44d1eba00c58c12daf"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 var ignoreUrlParametersMatching = [/^utm_/];
 
