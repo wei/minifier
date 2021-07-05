@@ -29,7 +29,7 @@
     "codemirror": "^5.57.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.8.1",
+    "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "file-saver": "^2.0.2",
